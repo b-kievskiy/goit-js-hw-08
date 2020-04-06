@@ -32,9 +32,11 @@ parentList.addEventListener("click", openOverlay);
 function openOverlay(e) {
   e.preventDefault();
   const imageLink = e.target.dataset.source;
-
-  lightboxOverlay.classList.add("is-open");
-  lightboxContent.setAttribute("src", `${imageLink}`);
+  if (e.target !== e.currentTarget) {
+    lightboxOverlay.classList.add("is-open");
+    lightboxContent.setAttribute("src", `${imageLink}`);
+  }
+  return;
 }
 
 closeButton.addEventListener("click", closeOverlay);
